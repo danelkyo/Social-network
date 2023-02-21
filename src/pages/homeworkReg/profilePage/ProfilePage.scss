@@ -1,0 +1,101 @@
+.user {
+    width: 60%;
+    background-color: white;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-top: 45px;
+    padding-bottom: 50px;
+    .profile {
+        padding-top: 80px;
+        padding-left: 110px;
+        padding-right: 110px;
+        .btn {
+            width: 200px;
+            padding: 20px 0px;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 125%;
+            color:white;
+            border: none;
+            margin-bottom: 15px;
+        }
+        .profile__info {
+            display: flex;
+            justify-content: space-between;
+            .profile__bio {
+                display: flex;
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 125%;
+                .profile__name {
+                    margin-bottom: 30px;
+                }
+                .profile__email{
+                    margin-bottom: 30px;
+                }
+                .profile__description{
+                    margin-bottom: 30px;
+                }
+                .profile__follow {
+                    padding: 20px 60px;
+                    color: white;
+                    background: #363755;
+                    border-radius: 10px;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 125%;
+                }
+            }
+            .settings {
+                background-color: #363755;
+            }
+            .out {
+                background-color: red;
+            }
+            .avatar {
+                height: 300px;
+                width: 300px;
+                object-fit: cover;
+                border-radius: 30px;
+                margin-right: 70px;
+            }
+            .avatar.yes {
+                border: none;
+            }
+            .profile__buttons {
+                display: flex;
+                align-items: start;
+                flex-direction: column;
+                justify-self: flex-end;
+            }
+            margin-bottom: 70px;
+        }
+        .profile__pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .profile__pagination_button {
+                width: 100%;
+                max-width: 220px;
+                border-radius: 10px;
+                background: #363755;
+                padding: 20px 55px;
+                color:white;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 125%;
+            }
+        }
+    }
+    a {
+        color: white;
+    }
+    .link {
+        width: 200px;
+        padding: 20px 0px;
+    }
+}

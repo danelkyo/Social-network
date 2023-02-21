@@ -1,0 +1,54 @@
+.reg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tabs {
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10%;
+    padding: 70px;
+    box-sizing: border-box;
+    .form {
+        width: 100%;
+    }
+    .inputs {
+        width: 300px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: 1px solid gray;
+        margin-bottom: 15px;
+    }
+    .accept {
+        margin-right: 10px;
+        font-size: 15px;
+    }
+    .title {
+        font-weight: 600;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+    .submitButton {
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        color: white;
+        background-color: rgb(13, 10, 29);
+        margin-top: 50px;
+        text-align: center;
+        border: none;
+    }
+    .submitButton.register {
+        margin-top: 20px;
+    }
+}
+.star {
+    position: absolute;
+    top: 5%;
+    left: 80%;
+}
