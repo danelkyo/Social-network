@@ -62,8 +62,8 @@ const ProfilePage = () => {
   }, [posts, user.id]);
   
   return (
-    <>
-      {/* <ProfileRouter /> */}
+    <div className="space">
+      <ProfileRouter />
       <div className="user">
         <div className="profile">
           <div className="profile__info">
@@ -102,7 +102,8 @@ const ProfilePage = () => {
             )}
         </div>
       </div>
-    </>
+      <div className="unnecessary"></div>
+    </div>
   );
 };
 

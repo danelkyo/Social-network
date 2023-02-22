@@ -38,7 +38,7 @@ const CreatePostPage = () => {
   }
 
   return (
-    <>
+    <div className={s.space}>
       <ProfileRouter />
       <div className={s.create}>
         <div className={s.create__container}>
@@ -78,7 +78,8 @@ const CreatePostPage = () => {
           </div>
         </div>
       </div>
-    </>
+      <div className={s.unnecessary}></div>
+    </div>
   )
 }
 
