@@ -63,7 +63,7 @@ const ProfilePage = () => {
   
   return (
     <>
-      <ProfileRouter />
+      {/* <ProfileRouter /> */}
       <div className="user">
         <div className="profile">
           <div className="profile__info">
@@ -78,14 +78,16 @@ const ProfilePage = () => {
                 <div className="profile__email">Hello! {user.email}</div>
                 <div className="profile__description">{user.description}</div>
               </div>
-            </div>
-            <div className="profile__buttons">
-              <Link to="/settings" className="btn settings">
-                Settings
-              </Link>
-              <button onClick={signOutFunc} className="btn out">
-                Sign out
-              </button>
+              <div className="profile__buttons">
+                  <button className="btn">
+                    <Link to="/settings">
+                      Settings
+                    </Link>
+                  </button>
+                  <button onClick={signOutFunc} className="btn out">
+                    Sign out
+                  </button>
+              </div>
             </div>
           </div>
           {

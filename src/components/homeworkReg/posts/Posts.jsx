@@ -13,6 +13,7 @@ const Posts = ({ posts }) => {
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch])
+  
   return (
       <div className="posts">
         <div className="posts_grid">

@@ -46,7 +46,6 @@ export const deletePostById = createAsyncThunk(
    fetch(endpoint + 'posts/' + id, {
       method: 'DELETE',
     })
-    return useNavigate("/feed");
 })
 
 export const editPostById = createAsyncThunk(
@@ -75,6 +74,7 @@ export const postsSlice = createSlice({
     [deletePostById.fulfilled]: (state, { payload }) => {
       state.post = null
       state.posts = state.posts.filter(p => Number(p.id) === Number(state.post.id))
+      return useNavigate("/feed");
     },
     [editPostById.fulfilled]: (state, { payload }) => {
       state.post = payload

@@ -3,8 +3,7 @@ import axios from "axios";
 
 const initialState = {
   user: null,
-  users: [],
-  friends: []
+  users: []
 };
 
 const endpoint = "http://localhost:3001/";
@@ -42,15 +41,6 @@ export const userSlice = createSlice({
     signOut: (state) => {
       state.user = null;
     }
-    // getFriends: (state) => {
-    //   const friends = state.users.forEach(user => {
-    //     state.user.friends.forEach(friend => {
-    //       if(Number(friend) === Number(user.id)) {
-    //         return user;
-    //       }
-    //   })  
-    //   console.log(friends);
-    // })
   },
   extraReducers: {
     [getUsers.fulfilled]: (state, { payload }) => {
