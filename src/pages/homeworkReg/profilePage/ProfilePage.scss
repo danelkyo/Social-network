@@ -51,6 +51,10 @@
                         height: 300px;
                         width: 300px;
                         object-fit: cover;
+                        @media (max-width: 360px) {
+                            max-width: 300px;
+                            width: 100%;
+                        }
                     }
 
                     .profile__personalData {
@@ -84,7 +88,7 @@
                             justify-items: center;
                         }
 
-                        @media (max-width: 445px) {
+                        @media (max-width: 490px) {
                             flex-direction: column;
                             align-items: start;
                         }
@@ -98,13 +102,14 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                gap: 20px;
 
                 .profile__pagination_button {
                     width: 100%;
                     max-width: 220px;
                     border-radius: 10px;
                     background: #363755;
-                    padding: 20px 55px;
+                    padding: 20px 0px;
                     color: white;
                     font-weight: 600;
                     font-size: 16px;
@@ -116,6 +121,11 @@
                 padding: 20px;
                 border-top-left-radius: 3%;
                 border-top-right-radius: 3%;
+            }
+
+            @media (max-width: 380px) {
+                border-radius: 10px;
+                padding: 10px;
             }
         }
 
