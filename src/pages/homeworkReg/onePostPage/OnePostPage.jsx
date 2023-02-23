@@ -69,7 +69,7 @@ const OnePostPage = () => {
   }
 
   return (
-    <>
+    <div className={s.space}>
       <ProfileRouter />
       <div className={s.onePost}>
         <div className={s.onePost__container}>
@@ -117,7 +117,8 @@ const OnePostPage = () => {
           }
         </div>
       </div>
-    </>
+      <div className={s.unnecessary}></div>
+    </div>
   )
 }
 
