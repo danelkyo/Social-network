@@ -16,15 +16,14 @@ const OnePostPage = () => {
   const { user, userById } = useSelector(state => state.user);
   const { post } = useSelector(state => state.posts);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const {enqueueSnackbar} = useSnackbar();
   
   const [editing, setEditing] = useState(false);
   
-  const [newTitle, setNewTitle] = useState(post.title);
-  const [newText, setNewText] = useState(post.text);
+  const [newTitle, setNewTitle] = useState(post?.title);
+  const [newText, setNewText] = useState(post?.text);
 
   const titleInputChangeHandler = (e) => {
     setNewTitle(e.target.value)
@@ -35,8 +34,8 @@ const OnePostPage = () => {
   };
 
   useEffect(() => {
-    dispatch(getUserById(post.user))
-  }, [dispatch, post.user]);
+    dispatch(getUserById(post?.user))
+  }, [dispatch, post?.user]);
 
   useEffect(() => {
     dispatch(getPostById(id));
@@ -44,12 +43,12 @@ const OnePostPage = () => {
   
   const deletePost = () => {
     dispatch(deletePostById(id));
-    navigate("/profile");
   }
 
   const editingSwitcher = () => {
     setEditing(editing => !editing);
   }
+
 
   const editPost = () => {
     if(newTitle && newText) {
@@ -84,7 +83,7 @@ const OnePostPage = () => {
                         : post?.title}
           </div>
           <div className={s.onePost__info}>
-            <img src={post.img} alt="postImage" className={s.onePost__image} />
+            <img src={post?.img} alt="postImage" className={s.onePost__image} />
             <div className={s.onePost__desc}>
               {editing ? <textarea 
                           type="text"

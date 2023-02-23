@@ -1,5 +1,4 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import { useNavigate } from 'react-router-dom';
 
 const initialState = {
   posts: [],
@@ -71,10 +70,9 @@ export const postsSlice = createSlice({
     [getPostById.fulfilled]: (state, { payload }) => {
       state.post = payload
     },
-    [deletePostById.fulfilled]: (state, { payload }) => {
-      state.post = null
+    [deletePostById.fulfilled]: (state) => {
       state.posts = state.posts.filter(p => Number(p.id) === Number(state.post.id))
-      return useNavigate("/feed");
+      state.post = null
     },
     [editPostById.fulfilled]: (state, { payload }) => {
       state.post = payload

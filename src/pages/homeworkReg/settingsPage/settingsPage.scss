@@ -1,8 +1,11 @@
 .settings {
     margin: 0 auto;
     width: 100%;
-    max-width: 600px;
-    padding: 40px 115px;
+    max-width: 400px;
+    padding: 40px 0px;
+    @media (max-width: 550px) {
+        padding: 40px 20px;
+    }
     .settings__form { 
         display: flex;
         flex-direction: column;
