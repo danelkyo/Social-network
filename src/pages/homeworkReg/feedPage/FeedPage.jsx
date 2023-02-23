@@ -34,7 +34,7 @@ const FeedPage = () => {
   const nextPage = () => setCurrentPage(prev => prev + 1);
 
   return (
-    <>
+    <div className={s.space}>
       <ProfileRouter />
       <div className={s.feed}>
         <div className={s.feed__content}>
@@ -54,7 +54,8 @@ const FeedPage = () => {
           )}
         </div>
       </div>
-    </>
+      <div className={s.unnecessary}></div>
+    </div>
   );
 };
 
