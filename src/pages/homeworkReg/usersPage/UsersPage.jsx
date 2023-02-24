@@ -21,10 +21,7 @@ const UsersPage = ({friendsPage}) => {
   const firstIndex = lastIndex - usersPerPage;
 
   const currentUsers = friendsPage ? friends.slice(firstIndex, lastIndex) : users.slice(firstIndex, lastIndex);
-  console.log('====================================');
-  console.log(firstIndex);
-  console.log(lastIndex);
-  console.log('====================================');
+  
   const disabledNext = friendsPage ? Math.ceil(friends.length / 3) > currentPage : Math.ceil(users.length / 3) > currentPage;
   const disabledPrev = currentPage > 1;
   

@@ -1,6 +1,6 @@
 .space {
     display: grid; 
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr 1200px 1fr;
     padding: 20px;
     align-items: start;
     @media (max-width: 1760px) {
@@ -11,7 +11,6 @@
         gap: 30px;
     }
     .user {
-        max-width: 1200px;
         width: 100%;
         background-color: white;
         border-top-left-radius: 10%;
@@ -28,21 +27,18 @@
                 .profile__bio {
                     display: grid;
                     grid-template: 'avatar info settings';
-                    font-weight: 500;
-                    font-size: 24px;
-                    line-height: 125%;
                     gap: 30px;
 
                     @media (max-width: 830px) {
                         grid-template: 'avatar settings'
-                            'info info';
+                                        'info info';
                     }
 
 
                     @media (max-width: 590px) {
                         grid-template: 'avatar'
-                            'settings'
-                            'info';
+                                        'settings'
+                                        'info';
                     }
 
                     .avatar {
@@ -61,17 +57,11 @@
                         grid-area: info;
                         display: flex;
                         flex-direction: column;
-
-                        .profile__name {
-                            margin-bottom: 30px;
-                        }
-
-                        .profile__email {
-                            margin-bottom: 30px;
-                        }
-
+                        gap: 30px;
+                        font-weight: 500;
+                        font-size: 24px;
+                        line-height: 125%;
                         .profile__description {
-                            margin-bottom: 30px;
                             word-break: break-word;
                         }
                     }

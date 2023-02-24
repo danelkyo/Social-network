@@ -1,0 +1,104 @@
+.space {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    padding: 20px;
+    align-items: start;
+
+    @media (max-width: 1760px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .user {
+        max-width: 1200px;
+        width: 100%;
+        background-color: white;
+        border-top-left-radius: 10%;
+        border-top-right-radius: 10%;
+        box-sizing: border-box;
+        padding-bottom: 50px;
+
+        @media (max-width: 900px) {
+            border-radius: 30px;
+        }
+
+        .profile {
+            padding-top: 80px;
+            padding-left: 110px;
+            padding-right: 110px;
+            @media (max-width: 760px) {
+                padding: 40px;
+            }
+
+            .profile__info {
+                .profile__bio {
+                    display: flex;
+                    justify-content: start;
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 125%;
+                    gap: 50px;
+                    margin-bottom: 50px;
+                    @media (max-width: 600px) {
+                        flex-direction: column;
+                    }
+
+                    .profile__personalData {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 30px;
+                        flex-grow: 1;
+
+                        .profile__description {
+                            word-break: break-word;
+                        }
+                    }
+
+                    .avatar {
+                        height: 300px;
+                        width: 300px;
+                        object-fit: cover;
+                        border-radius: 30px;
+                        @media (max-width: 420px) {
+                            max-width: 300px;
+                            width: 100%;
+                        }
+                    }
+                }
+
+                margin-bottom: 70px;
+            }
+
+            .profile__pagination {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+
+        a {
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            max-width: 220px;
+            border-radius: 10px;
+            background: #363755;
+            padding: 20px 0px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 125%;
+        }
+
+        .link {
+            width: 200px;
+            padding: 20px 0px;
+        }
+    }
+}

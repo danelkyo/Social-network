@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 import ProfileRouter from "../../../components/homeworkReg/profileRouter";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Posts from "../../../components/homeworkReg/posts/Posts";
 
 
 import { useSelector, useDispatch } from "react-redux";
 import { getUserById, changeData } from "../../../store/userSlice";
 
-import "./userPage.module.scss";
+import "./userPage.scss";
+
 const UserPage = () => {
   const { id } = useParams();
 
@@ -79,7 +80,7 @@ const UserPage = () => {
   };
 
   return (
-    <>
+    <div className="space">
       <ProfileRouter />
       <div className="user">
         <div className="profile">
@@ -98,9 +99,11 @@ const UserPage = () => {
                 </div>
                 <div className="profile__email">{userById?.email}</div>
                 <div className="profile__description">{userById?.description}</div>
-                <button className="profile__follow" onClick={switchFriend}>
-                  {friend ? "Unfollow" : "Follow"}
-                </button>
+                <div className="profile__follow">
+                  <button onClick={switchFriend}>
+                    {friend ? "Unfollow" : "Follow"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -108,14 +111,15 @@ const UserPage = () => {
             <>  
               <Posts posts={currentPosts}/>
               <div className="profile__pagination">
-              <button className="profile__pagination_button" style={{opacity: !disabledPrev ? 0.4: 1}} onClick={prevPage} disabled={!disabledPrev}>Prev</button>
-                <button className="profile__pagination_button" style={{opacity: !disabledNext ? 0.4: 1}} onClick={nextPage} disabled={!disabledNext}>Next</button>
+                <button style={{opacity: !disabledPrev ? 0.4: 1}} onClick={prevPage} disabled={!disabledPrev}>Prev</button>
+                <button style={{opacity: !disabledNext ? 0.4: 1}} onClick={nextPage} disabled={!disabledNext}>Next</button>
               </div>
             </>
           )}
         </div>
       </div>
-    </>
+      <div className="unnecessary"></div>
+    </div>
   );
 };
 

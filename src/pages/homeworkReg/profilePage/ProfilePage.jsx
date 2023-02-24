@@ -10,7 +10,7 @@ import { getPosts } from "../../../store/postsSlice";
 
 import ProfileRouter from "../../../components/homeworkReg/profileRouter";
 
-import "./ProfilePage.scss";
+import './ProfilePage.scss'
 
 const ProfilePage = () => {
   const {user} = useSelector(state => state.user)
