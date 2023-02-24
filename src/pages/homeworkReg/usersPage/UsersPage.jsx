@@ -41,7 +41,7 @@ const UsersPage = ({friendsPage}) => {
 
 
   return (
-    <>
+    <div className={s.space}>
       <ProfileRouter />
       <div className={s.users}>
         <div className={s.container}>
@@ -61,7 +61,8 @@ const UsersPage = ({friendsPage}) => {
           )}
         </div>
       </div>
-    </>
+      <div className={s.unnecessary}></div>
+    </div>
   );
 };
 

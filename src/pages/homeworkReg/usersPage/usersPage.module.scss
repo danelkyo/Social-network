@@ -1,35 +1,53 @@
-.users {
-    max-width: 1200px;
-    width: 100%;
-    background-color: white;
-    border-radius: 30px;
-    box-sizing: border-box;
-    margin: 0 auto;
-    margin-top: 45px;
-    padding-bottom: 50px;
-    .container {
-        padding: 70px 90px;
-        .users__title {
-            color: #363755;
-            font-weight: 700;
-            font-size: 32px;
-            line-height: 125%;
-            margin-bottom: 35px;
-        }
-        .users__pagination {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            .users__pagination_button {
-                width: 100%;
-                max-width: 220px;
-                border-radius: 10px;
-                background: #363755;
-                padding: 20px 55px;
-                color:white;
-                font-weight: 600;
-                font-size: 16px;
+.space {
+    display: grid;
+    grid-template-columns: 1fr 1200px 1fr;
+    padding: 20px;
+    align-items: start;
+
+    @media (max-width: 1760px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .users {
+        width: 100%;
+        background-color: white;
+        border-radius: 30px;
+        box-sizing: border-box;
+        padding-bottom: 50px;
+
+        .container {
+            padding: 70px 90px;
+            @media (max-width: 850px) {
+                padding: 30px;
+            }
+            .users__title {
+                color: #363755;
+                font-weight: 700;
+                font-size: 32px;
                 line-height: 125%;
+                margin-bottom: 35px;
+            }
+
+            .users__pagination {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+                .users__pagination_button {
+                    width: 100%;
+                    max-width: 220px;
+                    border-radius: 10px;
+                    background: #363755;
+                    padding: 20px 0px;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 125%;
+                }
             }
         }
     }

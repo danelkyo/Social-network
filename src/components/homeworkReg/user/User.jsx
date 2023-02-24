@@ -44,7 +44,7 @@ const User = ({ id, img, name, email }) => {
         </div>
       ) : (
           <div className={s.user__container}>
-            <Link to={"/users/" + id} className={s.user__container}>
+            <Link to={"/users/" + id} className={s.user__bio}>
               <div className={s.user__image}>
                 <img src={img} alt="userImage" className={s.image} />
               </div>

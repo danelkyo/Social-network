@@ -4,4 +4,7 @@
     border-radius: 30px;
     padding: 50px 70px;
     margin-bottom: 40px;
+    @media (max-width: 720px) {
+        padding: 20px;
+    }
 }

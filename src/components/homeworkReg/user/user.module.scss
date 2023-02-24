@@ -5,6 +5,16 @@
     .user__container {
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        @media (max-width: 520px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .user__bio {
+            display: flex;
+            align-items: center;
+        }
         .itsYou {
             padding: 15px 30px;
             display: flex;
@@ -13,6 +23,10 @@
             font-size: 50px;
             font-weight: 800;
             color:#363755;
+            @media (max-width: 420px) {
+                padding: 10px 20px;
+                font-size: 30px;
+            }
         }
         .link {
             display: flex;
@@ -26,6 +40,7 @@
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
+                border-radius: 20px
             }
         }
         .user__info {
@@ -45,7 +60,6 @@
         }
         .user__follow {
             display: flex;
-            margin-left: auto;
             font-size: 20px;
         }
     }
