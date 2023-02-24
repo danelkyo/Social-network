@@ -55,7 +55,6 @@ function a11yProps(index) {
 }
 
 const Registration = () => {
-  const { enqueueSnackbar } = useSnackbar();
 
   const dispatch = useDispatch();
 
