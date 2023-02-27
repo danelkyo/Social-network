@@ -95,10 +95,18 @@ const OnePostPage = () => {
             </div>
           </div>
           <div>
-            <Link to={"/users/" + userById?.id} className={s.onePost__profile}>
-              <img src={userById?.avatar} alt="userAvatar" className={s.onePost__profile_avatar}/>
-              <div className={s.onePost__profile_name}>{userById?.email}</div>
-            </Link>
+            { 
+              Number(user.id) === Number(userById.id) ? 
+              <Link to="/profile" className={s.onePost__profile}>
+                <img src={userById?.avatar} alt="userAvatar" className={s.onePost__profile_avatar}/>
+                <div className={s.onePost__profile_name}>{userById?.email}</div>
+              </Link>
+              :
+              <Link to={"/users/" + userById?.id} className={s.onePost__profile}>
+                <img src={userById?.avatar} alt="userAvatar" className={s.onePost__profile_avatar}/>
+                <div className={s.onePost__profile_name}>{userById?.email}</div>
+              </Link>
+            }
           </div>
           { 
             Number(user.id) === Number(userById?.id) && 
