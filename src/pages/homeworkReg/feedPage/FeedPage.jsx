@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Posts from "../../../components/homeworkReg/posts/Posts";
 
 import ProfileRouter from "../../../components/homeworkReg/profileRouter";
+
+import usePagination from '../../../hooks/usePagination';
 
 import { getPosts } from "../../../store/postsSlice";
 import { getUsers } from "../../../store/userSlice";
@@ -14,24 +16,14 @@ const FeedPage = () => {
   const { posts } = useSelector((state) => state.posts);
 
   const dispatch = useDispatch();
-  
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
 
-  const lastIndex = currentPage * postsPerPage;
-  const firstIndex = lastIndex - postsPerPage;
-  const currentPosts = posts.slice(firstIndex, lastIndex);
-
-  const disabledNext = Math.ceil(posts.length / 3) > currentPage;
-  const disabledPrev = currentPage > 1;
+  const {currentData, disabledNext, disabledPrev, prevPage, nextPage, setMyData} = usePagination();
 
   useEffect(() => {
     dispatch(getPosts());
     dispatch(getUsers());
-  }, [dispatch]);
-
-  const prevPage = () => setCurrentPage(prev => prev - 1);
-  const nextPage = () => setCurrentPage(prev => prev + 1);
+    setMyData(posts);
+  }, [dispatch, setMyData]);
 
   return (
     <div className={s.space}>
@@ -45,7 +37,7 @@ const FeedPage = () => {
           {
             posts.length <= 0 || (
             <>
-              <Posts posts={currentPosts}/>
+              <Posts posts={currentData}/>
               <div className={s.feed__pagination}>
                 <button style={{opacity: !disabledPrev ? 0.4: 1}} onClick={prevPage} disabled={!disabledPrev}>Prev</button>
                 <button style={{opacity: !disabledNext ? 0.4: 1}} onClick={nextPage} disabled={!disabledNext}>Next</button>

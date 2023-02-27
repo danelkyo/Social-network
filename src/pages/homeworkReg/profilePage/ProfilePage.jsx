@@ -8,6 +8,8 @@ import Posts from "../../../components/homeworkReg/posts/Posts";
 import { signOut } from "../../../store/userSlice";
 import { getPosts } from "../../../store/postsSlice";
 
+import usePagination from '../../../hooks/usePagination';
+
 import ProfileRouter from "../../../components/homeworkReg/profileRouter";
 
 import './ProfilePage.scss'
@@ -16,24 +18,11 @@ const ProfilePage = () => {
   const {user} = useSelector(state => state.user)
   const {posts} = useSelector(state => state.posts)
 
-  const [myPosts, setMyPosts] = useState([]);
-  
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
-
-  const lastIndex = currentPage * postsPerPage;
-  const firstIndex = lastIndex - postsPerPage;
-  const currentPosts = myPosts.slice(firstIndex, lastIndex);
-
-  const disabledNext = Math.ceil(myPosts.length / 3) > currentPage;
-  const disabledPrev = currentPage > 1;
+  const {currentData, disabledNext, disabledPrev, prevPage, nextPage, setMyData} = usePagination();
 
   const [havePosts, setHavePosts] = useState(false);
 
   const dispatch = useDispatch();
-
-  const prevPage = () => setCurrentPage(prev => prev - 1);
-  const nextPage = () => setCurrentPage(prev => prev + 1);
 
   useEffect(() => {
     posts.find((post) => {
@@ -58,8 +47,8 @@ const ProfilePage = () => {
       } 
     });
     yourPosts = yourPosts.filter(post => post);
-    setMyPosts(yourPosts);
-  }, [posts, user.id]);
+    setMyData(yourPosts);
+  }, [posts, setMyData, user.id]);
   
   return (
     <div className="space">
@@ -93,7 +82,7 @@ const ProfilePage = () => {
           {
             havePosts && (
             <>
-              <Posts posts={currentPosts} />
+              <Posts posts={currentData} />
               <div className="profile__pagination">
                 <button className="profile__pagination_button" style={{opacity: !disabledPrev ? 0.4: 1}} onClick={prevPage} disabled={!disabledPrev}>Prev</button>
                 <button className="profile__pagination_button" style={{opacity: !disabledNext ? 0.4: 1}} onClick={nextPage} disabled={!disabledNext}>Next</button>

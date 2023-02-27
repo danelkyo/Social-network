@@ -16,7 +16,7 @@ const usePagination = () => {
     const prevPage = () => setCurrentPage(prev => prev - 1);
     const nextPage = () => setCurrentPage(prev => prev + 1);
   
-    return {currentData, disabledNext, disabledPrev, prevPage, nextPage, setMyData};
+    return {currentData, disabledNext, disabledPrev, prevPage, nextPage, setMyData, myData, setCurrentPage};
 }
 
 export default usePagination;

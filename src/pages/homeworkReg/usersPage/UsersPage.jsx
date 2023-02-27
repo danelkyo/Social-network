@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ProfileRouter from "../../../components/homeworkReg/profileRouter";
-
 import Users from "../../../components/homeworkReg/usersPag/Users";
+
+import usePagination from '../../../hooks/usePagination';
 
 import { getUsers } from "../../../store/userSlice";
 
@@ -12,30 +13,24 @@ const UsersPage = ({friendsPage}) => {
   const {user, users} = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const [friends, setFriends] = useState([]);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage] = useState(3);
-
-  const lastIndex = currentPage * usersPerPage;
-  const firstIndex = lastIndex - usersPerPage;
-
-  const currentUsers = friendsPage ? friends.slice(firstIndex, lastIndex) : users.slice(firstIndex, lastIndex);
+  const {currentData, disabledNext, disabledPrev, prevPage, nextPage, setMyData, setCurrentPage} = usePagination();
   
-  const disabledNext = friendsPage ? Math.ceil(friends.length / 3) > currentPage : Math.ceil(users.length / 3) > currentPage;
-  const disabledPrev = currentPage > 1;
-  
-  const howManyFriends = friends.length <= 0;
-
-  const prevPage = () => setCurrentPage(prev => prev - 1);
-  const nextPage = () => setCurrentPage(prev => prev + 1);
+  const howManyFriends = user.friends.length <= 0;
 
   useEffect(() => {
     dispatch(getUsers());
-    const friends = user.friends.map(friend => users.find(user => Number(user.id) === Number(friend)));
-    setFriends(friends);
-  }, [dispatch, user.friends]);
+  }, [dispatch]);
 
+    useEffect(() => {
+      if(friendsPage) {
+        const friends = user.friends.map(friend => users.find(user => Number(user.id) === Number(friend)));
+        setMyData(friends);
+        setCurrentPage(1);
+      } else {
+        setMyData(users);
+      }
+    }, [dispatch, friendsPage, setCurrentPage, setMyData, user.friends]);
+  
 
   return (
     <div className={s.space}>
@@ -47,7 +42,7 @@ const UsersPage = ({friendsPage}) => {
             <>
               {users.length <= 0 || (
                 <>
-                  <Users friendsPage={friendsPage} currentUsers={currentUsers}/>
+                  <Users friendsPage={friendsPage} currentUsers={currentData}/>
                   <div className={s.users__pagination}>
                     <button className={s.users__pagination_button} style={{opacity: !disabledPrev ? 0.4: 1}} onClick={prevPage} disabled={!disabledPrev}>Prev</button>
                     <button className={s.users__pagination_button} style={{opacity: !disabledNext ? 0.4: 1}} onClick={nextPage} disabled={!disabledNext}>Next</button>

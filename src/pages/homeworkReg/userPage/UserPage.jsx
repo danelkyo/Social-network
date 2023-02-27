@@ -4,6 +4,7 @@ import ProfileRouter from "../../../components/homeworkReg/profileRouter";
 import { useParams } from "react-router-dom";
 import Posts from "../../../components/homeworkReg/posts/Posts";
 
+import usePagination from '../../../hooks/usePagination';
 
 import { useSelector, useDispatch } from "react-redux";
 import { getUserById, changeData } from "../../../store/userSlice";
@@ -15,27 +16,13 @@ const UserPage = () => {
 
   const dispatch = useDispatch();
 
+  const {currentData, disabledNext, disabledPrev, prevPage, nextPage, setMyData} = usePagination();
+
   const { user, userById } = useSelector((state) => state.user);
   const { posts } = useSelector((state) => state.posts);
-  
-  const [hisPosts, setHisPosts] = useState([]);
-  
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
-
-  const lastIndex = currentPage * postsPerPage;
-  const firstIndex = lastIndex - postsPerPage;
-  const currentPosts = hisPosts.slice(firstIndex, lastIndex);
-
-  const disabledNext = Math.ceil(hisPosts.length / 3) > currentPage;
-  const disabledPrev = currentPage > 1;
-
-  const prevPage = () => setCurrentPage(prev => prev - 1);
-  const nextPage = () => setCurrentPage(prev => prev + 1);
-
+ 
   const [friend, setFriend] = useState(null);
   const [hasPosts, setHasPosts] = useState(false);
-
 
   useEffect(() => {
     let yourPosts = posts.map(post => {
@@ -44,8 +31,8 @@ const UserPage = () => {
       } 
     });
     yourPosts = yourPosts.filter(post => post);
-    setHisPosts(yourPosts);
-  }, [posts, id]);
+    setMyData(yourPosts);
+  }, [posts, id, setMyData]);
 
   useEffect(() => {
     dispatch(getUserById(id));
@@ -109,7 +96,7 @@ const UserPage = () => {
           </div>
           {hasPosts && (
             <>  
-              <Posts posts={currentPosts}/>
+              <Posts posts={currentData}/>
               <div className="profile__pagination">
                 <button style={{opacity: !disabledPrev ? 0.4: 1}} onClick={prevPage} disabled={!disabledPrev}>Prev</button>
                 <button style={{opacity: !disabledNext ? 0.4: 1}} onClick={nextPage} disabled={!disabledNext}>Next</button>

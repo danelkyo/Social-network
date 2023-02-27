@@ -1,6 +1,6 @@
 .space {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr 1200px 1fr;
     padding: 20px;
     align-items: start;
 
@@ -13,11 +13,9 @@
     }
 
     .user {
-        max-width: 1200px;
-        width: 100%;
         background-color: white;
-        border-top-left-radius: 10%;
-        border-top-right-radius: 10%;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
         box-sizing: border-box;
         padding-bottom: 50px;
 
