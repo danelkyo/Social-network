@@ -96,7 +96,7 @@ const OnePostPage = () => {
           </div>
           <div>
             { 
-              Number(user.id) === Number(userById.id) ? 
+              Number(user?.id) === Number(userById?.id) ? 
               <Link to="/profile" className={s.onePost__profile}>
                 <img src={userById?.avatar} alt="userAvatar" className={s.onePost__profile_avatar}/>
                 <div className={s.onePost__profile_name}>{userById?.email}</div>
@@ -109,7 +109,7 @@ const OnePostPage = () => {
             }
           </div>
           { 
-            Number(user.id) === Number(userById?.id) && 
+            Number(user?.id) === Number(userById?.id) && 
             <div className={s.onePost__settings}>
               <button className={s.onePost__delete} onClick={deletePost}>Delete</button>
               { editing ? 
